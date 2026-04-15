@@ -15,11 +15,11 @@ class AppBarLichessTitle extends StatelessWidget {
         children: [
           const WidgetSpan(
             alignment: PlaceholderAlignment.middle,
-            child: Icon(LichessIcons.logo_lichess, size: 24),
+            child: Icon(Icons.school_rounded, size: 24),
           ),
-          const TextSpan(text: ' lichess'),
+          const TextSpan(text: ' Lelock University '),
           TextSpan(
-            text: '.org',
+            text: 'Chess',
             style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)),
           ),
         ],
@@ -59,60 +59,18 @@ class AppBarTitleText extends StatelessWidget {
   }
 }
 
-class LichessMessage extends StatefulWidget {
+class LichessMessage extends StatelessWidget {
   const LichessMessage({super.key, this.style, this.textAlign = TextAlign.start});
 
   final TextStyle? style;
   final TextAlign textAlign;
 
   @override
-  State<LichessMessage> createState() => _LichessMessageState();
-}
-
-class _LichessMessageState extends State<LichessMessage> {
-  late TapGestureRecognizer _recognizer;
-
-  @override
-  void initState() {
-    super.initState();
-    _recognizer = TapGestureRecognizer()..onTap = _handleTap;
-  }
-
-  @override
-  void dispose() {
-    _recognizer.dispose();
-    super.dispose();
-  }
-
-  void _handleTap() {
-    launchUrl(Uri.parse('https://lichess.org/features'));
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final trans = context.l10n.xIsAFreeYLibreOpenSourceChessServer('Lichess', context.l10n.really);
-    final regexp = RegExp(r'''^([^(]*\()([^)]*)(\).*)$''');
-    final match = regexp.firstMatch(trans);
-    final List<TextSpan> spans = [];
-    if (match != null) {
-      for (var i = 1; i <= match.groupCount; i++) {
-        spans.add(
-          TextSpan(
-            text: match[i],
-            style: i == 2 ? TextStyle(color: ColorScheme.of(context).primary) : null,
-            recognizer: i == 2 ? _recognizer : null,
-          ),
-        );
-      }
-    } else {
-      spans.add(TextSpan(text: trans));
-    }
-
-    return MergeSemantics(
-      child: Text.rich(
-        TextSpan(style: widget.style, children: spans),
-        textAlign: widget.textAlign,
-      ),
+    return Text(
+      'Your companion for mastering chess.\nPowered by Lelock University Press.',
+      style: style,
+      textAlign: textAlign,
     );
   }
 }

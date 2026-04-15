@@ -183,31 +183,6 @@ class _HomeScreenState extends ConsumerState<HomeTabScreen> {
                 child: LichessMessage(style: TextTheme.of(context).bodyLarge),
               ),
               const SizedBox(height: 8.0),
-              if (authUser == null) ...[
-                const Center(child: _SignInWidget()),
-                const SizedBox(height: 16.0),
-              ],
-              if (Theme.of(context).platform != TargetPlatform.iOS &&
-                  (authUser == null || authUser.user.isPatron != true)) ...[
-                Center(
-                  child: FilledButton.tonal(
-                    onPressed: () {
-                      launchUrl(Uri.parse('https://lichess.org/patron'));
-                    },
-                    child: Text(context.l10n.patronDonate),
-                  ),
-                ),
-                const SizedBox(height: 16.0),
-              ],
-              Center(
-                child: FilledButton.tonal(
-                  onPressed: () {
-                    launchUrl(Uri.parse('https://lichess.org/about'));
-                  },
-                  child: Text(context.l10n.aboutX('Lichess...')),
-                ),
-              ),
-              const _WelcomeMessageCard(),
               const _HomeCustomizationTip(),
             ],
           ];
@@ -993,7 +968,7 @@ class _WelcomeMessageCardState extends State<_WelcomeMessageCard> {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: '${context.l10n.mobileWelcomeToLichessApp}\n\n',
+                        text: 'Welcome to Lelock University Chess!\n\n',
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       TextSpan(

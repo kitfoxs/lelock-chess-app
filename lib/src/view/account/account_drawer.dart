@@ -353,7 +353,7 @@ class AboutScreen extends ConsumerWidget {
             children: [
               ListTile(
                 leading: const Icon(Icons.info_outlined),
-                title: Text(context.l10n.aboutX('Lichess')),
+                title: Text(context.l10n.aboutX('Lelock Chess')),
                 trailing: Theme.of(context).platform == TargetPlatform.iOS
                     ? const CupertinoListTileChevron()
                     : null,
@@ -450,9 +450,9 @@ class AboutScreen extends ConsumerWidget {
                 onTap: () {
                   showLicensePage(
                     context: context,
-                    applicationName: 'Lichess',
+                    applicationName: 'Lelock University Chess',
                     applicationVersion: packageInfo.version,
-                    applicationIcon: const Icon(LichessIcons.logo_lichess),
+                    applicationIcon: const Icon(Icons.school_rounded),
                   );
                 },
               ),
